@@ -1,24 +1,39 @@
 <div class="container" #containerId id="container">
-  <div class="form-container sign-up-container">
+  <form #form="ngForm" class="form-container sign-up-container" (ngSubmit)="register(form)">
     <div id="form">
       <h1>Create your account</h1>
-      <input #username type="text" placeholder="Username" />
-      <input #email type="email" placeholder="Email" />
-      <input #firstName type="text" placeholder="First Name" />
-      <input #lastName type="email" placeholder="Last Name" />
-      <input #password type="password" placeholder="Password" />
-      <button (click)="register(username, email, password)">Sign Up</button>
+      <div class="form-group">
+        <input type="text" name="username" placeholder="Username" ngModel />
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Email" ngModel />
+      </div>
+      <div class="form-group">
+        <input type="text" name="firstName" placeholder="First Name" ngModel />
+      </div>
+      <div class="form-group">
+        <input type="text" name="lastName" placeholder="Last Name" ngModel />
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" placeholder="Password" ngModel />
+      </div>
+      <button>Sign Up</button>
     </div>
-  </div>
+  </form>
 
-  <div class="form-container sign-in-container">
+  <form #loginForm="ngForm" class="form-container sign-in-container" (ngSubmit)="login(loginForm)">
     <div id="form">
       <h1>Sign in</h1>
-      <input #usernameLogin type="text" placeholder="Username" />
-      <input #passwordLogin type="password" placeholder="Password" />
-      <button (click)="login(usernameLogin, passwordLogin)">Sign In</button>
+      <div class="form-group">
+        <input type="text" placeholder="Username" name="username" ngModel />
+      </div>
+      <div class="form-group">
+        <input type="password" placeholder="Password" name="password" ngModel />
+      </div>
+      <button>Sign In</button>
     </div>
-  </div>
+  </form>
+
   <div class="overlay-container">
     <div class="overlay">
       <div class="overlay-panel overlay-left">
@@ -35,4 +50,5 @@
       </div>
     </div>
   </div>
+
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -15,24 +16,34 @@ export class LoginComponent implements OnInit {
   //   });
   // }
 
-  async register(username: HTMLInputElement, email: HTMLInputElement, password: HTMLInputElement){
-    const data = {username: username.value, email: email.value, password: password.value};
+  async register(form: NgForm) {
+    console.log(form.value.username);
+
+    const data = {
+      username: form.value.username,
+      email: form.value.email,
+      firstName: form.value.firstName,
+      lastName: form.value.lastName,
+      password: form.value.password,
+    };
+
     const result = await fetch(`http://localhost:5000/auth/register`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        credentials: 'include',
-        body: JSON.stringify(data),
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(data),
     })
-        .then(res => res.json())
-        .catch(error => console.log(error));
+      .then((res) => res.json())
+      .catch((error) => console.log(error));
 
-        console.log(result);
-  };
+    console.log(result);
+  }
 
-  async login(username: HTMLInputElement, password: HTMLInputElement){
-    const data = {username: username.value, password: password.value};
+  async login(form: NgForm) {
+    const data = {username: form.value.username, password:form.value.password};
+    
     const result = await fetch(`http://localhost:5000/auth/login`, {
         method: 'POST',
         headers: {
@@ -43,9 +54,8 @@ export class LoginComponent implements OnInit {
     })
         .then(res => res.json())
         .catch(error => console.log(error));
-
         console.log(result);
-  };
+  }
 
   showSignUp(container: HTMLElement): void {
     container.classList.add('right-panel-active');

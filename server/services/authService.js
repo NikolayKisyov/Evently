@@ -4,30 +4,30 @@ const { SALT_ROUNDS, SECRET } = require("../config");
 const User = require("../models/User");
 
 const register = async (data) => {
-  // const { email, fullName, imageUrl, username, password, isPublic } = data;
-  const { email, username, password } = data;
+ const { username, email, firstName, lastName, password} = data;  
 
-  let userdb = await User.findOne({ username });
-  if (userdb) throw { error: { message: "User already exists!" } };
+  let usernameDb = await User.findOne({ username });
+  if (usernameDb) throw { error: { message: "User already exists!" } };
+
+  let userEmail = await User.findOne({ email });
+  if (userEmail) throw { error: { message: "Email already taken!" } };
 
   let salt = await bcrypt.genSalt(SALT_ROUNDS);
   let hash = await bcrypt.hash(password, salt);
 
-  // const user = new User({ email, fullName, username, profileImage: imageUrl, isPublic: true, password: hash });
-  const user = new User({ email, username, password: hash });
+  const user = new User({ username, email, firstName, lastName, password: hash });
 
   return await user.save();
 };
 
 const login = async (data) => {
-  // const { email, fullName, username, password } = data;
 
-  const { email, password } = data;
-  let user = await User.findOne({ email });
+  const { username, password } = data;
+  let user = await User.findOne({ username });
   if (!user) throw { error: { message: "User not found" } };
 
   let isMatch = await bcrypt.compare(password, user.password);
-  if (!isMatch) throw { error: { message: "Password does not match" } };
+  if (!isMatch) throw { error: { message: "Invalid username or password" } };
 
   let token = jwt.sign({ _id: user._id, username: user.username }, SECRET);
   //let token = jwt.sign({ _id: user._id, email: user.email }, SECRET)

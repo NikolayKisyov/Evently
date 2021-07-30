@@ -1,7 +1,7 @@
 const config = {
     development: {
         PORT: 5000,
-        DB_CONNECTION: 'mongodb://localhost/Bussinly',
+        DB_CONNECTION: 'mongodb://localhost/Evently',
         SALT_ROUNDS: 10,
         SECRET: 'taina',
         COOKIE_NAME: 'x-auth-token',
