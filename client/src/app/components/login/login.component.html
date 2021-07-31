@@ -3,19 +3,44 @@
     <div id="form">
       <h1>Create your account</h1>
       <div class="form-group">
-        <input type="text" name="username" placeholder="Username" ngModel />
+        <input type="text" name="username" placeholder="Username" #usernameInput="ngModel" ngModel required minlength="5" maxlength="15"/>
+        <ul *ngIf="usernameInput.invalid && usernameInput.touched" class="errors">
+           <li *ngIf="usernameInput.errors?.required">Username is required</li>
+           <li *ngIf="usernameInput.errors?.minlength">Username should be atleast 5 characters long</li>
+           <li *ngIf="usernameInput.errors?.maxlength">Username shouldn't be longer than 15 characters</li>
+        </ul>
       </div>
       <div class="form-group">
-        <input type="email" name="email" placeholder="Email" ngModel />
+        <input type="email" name="email" placeholder="Email" #emailInput="ngModel" ngModel required email />
+        <ul *ngIf="emailInput.invalid && emailInput.touched" class="errors">
+          <li *ngIf="emailInput.errors?.required">Email is required</li>
+          <li *ngIf="emailInput.errors?.email">Invalid email! Email should be in format example@text.text</li>
+       </ul>
       </div>
       <div class="form-group">
-        <input type="text" name="firstName" placeholder="First Name" ngModel />
+        <input type="text" name="firstName" placeholder="First Name" #firstNameInput="ngModel" ngModel required minlength="3" maxlength="30"/>
+        <div class="alert alert-danger">
+        <ul *ngIf="firstNameInput.invalid && firstNameInput.touched" class="errors">
+          <li *ngIf="firstNameInput.errors?.required">First name is required</li>
+          <li *ngIf="firstNameInput.errors?.minlength">First name should be atleast 3 characters long</li>
+          <li *ngIf="usernameInput.errors?.maxlength">First name shouldn't be longer than 30 characters</li>
+       </ul>
+      </div>
       </div>
       <div class="form-group">
-        <input type="text" name="lastName" placeholder="Last Name" ngModel />
+        <input type="text" name="lastName" placeholder="Last Name" #lastNameInput="ngModel" ngModel required minlength="3" maxlength="30" />
+        <ul *ngIf="lastNameInput.invalid && lastNameInput.touched" class="errors">
+          <li *ngIf="lastNameInput.errors?.required">Last name is required</li>
+          <li *ngIf="lastNameInput.errors?.minlength">Last name should be atleast 3 characters long</li>
+          <li *ngIf="usernameInput.errors?.maxlength">Last name shouldn't be longer than 30 characters</li>
+       </ul>
       </div>
       <div class="form-group">
-        <input type="password" name="password" placeholder="Password" ngModel />
+        <input type="password" name="password" placeholder="Password" #passwordInput="ngModel" ngModel required minlength="4"/>
+        <ul *ngIf="passwordInput.invalid && passwordInput.touched" class="errors">
+          <li *ngIf="passwordInput.errors?.required">Password is required</li>
+          <li *ngIf="passwordInput.errors?.minlength">Password should be atleast 4 symbols</li>
+       </ul>
       </div>
       <button>Sign Up</button>
     </div>
@@ -25,10 +50,19 @@
     <div id="form">
       <h1>Sign in</h1>
       <div class="form-group">
-        <input type="text" placeholder="Username" name="username" ngModel />
+        <input type="text" name="username" placeholder="Username" #usernameLoginInput="ngModel" ngModel required minlength="5" maxlength="15"/>
+        <ul *ngIf="usernameLoginInput.invalid && usernameLoginInput.touched" class="errors">
+           <li *ngIf="usernameLoginInput.errors?.required">Username is required</li>
+           <li *ngIf="usernameLoginInput.errors?.minlength">Username should be atleast 5 characters long</li>
+           <li *ngIf="usernameLoginInput.errors?.maxlength">Username shouldn't be longer than 15 characters</li>
+        </ul>
       </div>
       <div class="form-group">
-        <input type="password" placeholder="Password" name="password" ngModel />
+        <input type="password" name="password" placeholder="Password" #passwordLoginInput="ngModel" ngModel required minlength="4"/>
+        <ul *ngIf="passwordLoginInput.invalid && passwordLoginInput.touched" class="errors">
+          <li *ngIf="passwordLoginInput.errors?.required">Password is required</li>
+          <li *ngIf="passwordLoginInput.errors?.minlength">Password should be atleast 4 symbols</li>
+       </ul>
       </div>
       <button>Sign In</button>
     </div>
@@ -52,3 +86,4 @@
   </div>
 
 </div>
+<button type="button" class="btn btn-light">YO</button>

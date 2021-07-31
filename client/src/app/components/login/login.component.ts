@@ -17,7 +17,9 @@ export class LoginComponent implements OnInit {
   // }
 
   async register(form: NgForm) {
-    console.log(form.value.username);
+    console.log(form.value);
+
+    if (form.invalid) { return; }
 
     const data = {
       username: form.value.username,
@@ -37,11 +39,15 @@ export class LoginComponent implements OnInit {
     })
       .then((res) => res.json())
       .catch((error) => console.log(error));
-
+ 
+    
+    console.log('client', result);
     console.log(result);
   }
 
   async login(form: NgForm) {
+    if (form.invalid) { return; }
+
     const data = {username: form.value.username, password:form.value.password};
     
     const result = await fetch(`http://localhost:5000/auth/login`, {
