@@ -44,20 +44,6 @@ export class SignComponent implements OnInit {
         console.error(err);
       }
     })
-
-    // await fetch(`http://localhost:5000/auth/register`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   credentials: 'include',
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((res) => res.json())
-    //   .catch((error) => console.log(error));
-
-    // console.log('client', result);
-    // console.log(result);
   }
 
   async login(form: NgForm) {
@@ -73,26 +59,28 @@ export class SignComponent implements OnInit {
     };
 
     this.userService.login(data).subscribe({
-      next: () => {
+      next: (res) => {
+        localStorage.setItem('user', JSON.stringify(res));
         //const redirectUrl = this.activatedRoute.snapshot.queryParams.redirectUrl || '/';
         this.router.navigate(['/']);
       },
       error: (err) => {
         console.log(err);
         this.serverError = true;
+        this.showSignIn(this.container!);
       }
     });
 
   }
 
   showSignUp(container: HTMLElement): void {
-    if(this.container == null){
+    if(this.container == undefined){
       this.container = container;
     }
     container.classList.add('right-panel-active');
   }
   showSignIn(container: HTMLElement): void {
-    if(this.container == null){
+    if(this.container == undefined){
       this.container = container;
     }
     container.classList.remove('right-panel-active');

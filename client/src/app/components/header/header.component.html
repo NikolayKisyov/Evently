@@ -10,6 +10,6 @@
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>account_box</mat-icon> 
     </button>
-    <a mat-button>Login</a>
-    <a mat-button>Register</a>
+    <button *ngIf="isLogged" (click)="logout()" mat-button>Logout</button>
+    <a mat-button routerLink="/authenticate">Authenticate</a>
 </mat-toolbar>

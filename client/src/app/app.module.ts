@@ -10,12 +10,14 @@ import { FormsModule } from '@angular/forms';
 import { UserModule } from './components/user/user.module';
 import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FoodCardComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
