@@ -1,0 +1,89 @@
+<div class="container" #containerId id="container">
+  <form #form="ngForm" class="form-container sign-up-container" (ngSubmit)="register(form)">
+    <div id="form">
+      <h1>Create your account</h1>
+      <div *ngIf="usernameInput.invalid && usernameInput.touched">
+         <mat-error *ngIf="usernameInput.errors?.required">Username is required</mat-error>
+         <mat-error *ngIf="usernameInput.errors?.minlength">Username should be atleast 5 characters long</mat-error>
+         <mat-error *ngIf="usernameInput.errors?.maxlength">Username shouldn't be longer than 15 characters</mat-error>
+      </div>
+      <div *ngIf="emailInput.invalid && emailInput.touched">
+        <mat-error *ngIf="emailInput.errors?.required">Email is required</mat-error>
+        <mat-error *ngIf="emailInput.errors?.email">Invalid email! Email should be in format example@text.text</mat-error>
+     </div>
+     <div *ngIf="firstNameInput.invalid && firstNameInput.touched">
+       <mat-error *ngIf="firstNameInput.errors?.required">First name is required</mat-error>
+       <mat-error *ngIf="firstNameInput.errors?.minlength">First name should be atleast 3 characters long</mat-error>
+       <mat-error *ngIf="usernameInput.errors?.maxlength">First name shouldn't be longer than 30 characters</mat-error>
+    </div>
+    <div *ngIf="lastNameInput.invalid && lastNameInput.touched">
+      <mat-error *ngIf="lastNameInput.errors?.required">Last name is required</mat-error>
+      <mat-error *ngIf="lastNameInput.errors?.minlength">Last name should be atleast 3 characters long</mat-error>
+      <mat-error *ngIf="usernameInput.errors?.maxlength">Last name shouldn't be longer than 30 characters</mat-error>
+   </div>
+   <div *ngIf="passwordInput.invalid && passwordInput.touched">
+     <mat-error *ngIf="passwordInput.errors?.required">Password is required</mat-error>
+     <mat-error *ngIf="passwordInput.errors?.minlength">Password should be atleast 4 symbols</mat-error>
+  </div>
+      <div class="form-group">
+        <input type="text" name="username" placeholder="Username" #usernameInput="ngModel" ngModel required minlength="5" maxlength="15"/>
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Email" #emailInput="ngModel" ngModel required email />
+      </div>
+      <div class="form-group">
+        <input type="text" name="firstName" placeholder="First Name" #firstNameInput="ngModel" ngModel required minlength="3" maxlength="30"/>
+        <div class="alert alert-danger">
+      </div>
+      </div>
+      <div class="form-group">
+        <input type="text" name="lastName" placeholder="Last Name" #lastNameInput="ngModel" ngModel required minlength="3" maxlength="30" />
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" placeholder="Password" #passwordInput="ngModel" ngModel required minlength="4"/>
+      </div>
+      <button>Sign Up</button>
+    </div>
+  </form>
+
+  <form #loginForm="ngForm" class="form-container sign-in-container" (ngSubmit)="login(loginForm)">
+    <div id="form">
+      <h1>Sign in</h1>
+        <mat-error *ngIf="serverError">Invalid username or password</mat-error>
+      <div *ngIf="usernameLoginInput.invalid && usernameLoginInput.touched">
+         <mat-error *ngIf="usernameLoginInput.errors?.required">Username is required</mat-error>
+         <mat-error *ngIf="usernameLoginInput.errors?.minlength">Username should be atleast 5 characters long</mat-error>
+         <mat-error *ngIf="usernameLoginInput.errors?.maxlength">Username shouldn't be longer than 15 characters</mat-error>
+      </div>
+      <div *ngIf="passwordLoginInput.invalid && passwordLoginInput.touched">
+       <mat-error *ngIf="passwordLoginInput.errors?.required">Password is required</mat-error>
+       <mat-error *ngIf="passwordLoginInput.errors?.minlength">Password should be atleast 4 symbols</mat-error>
+      </div>
+      <div class="form-group">
+        <input type="text" name="username" placeholder="Username" #usernameLoginInput="ngModel" ngModel required minlength="5" maxlength="15"/>
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" placeholder="Password" #passwordLoginInput="ngModel" ngModel required minlength="4"/>
+      </div>
+      <button>Sign In</button>
+    </div>
+  </form>
+
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-left">
+        <h1>Welcome Back!</h1>
+        <p>To keep connected with us please login with your personal info</p>
+        <button class="ghost" (click)="showSignIn(containerId)" id="signIn">
+          Sign In
+        </button>
+      </div>
+      <div class="overlay-panel overlay-right">
+        <h1>Hello, Friend!</h1>
+        <p>Enter your personal details and start journey with us</p>
+        <button class="ghost" (click)="showSignUp(containerId)">Sign Up</button>
+      </div>
+    </div>
+  </div>
+
+</div>
