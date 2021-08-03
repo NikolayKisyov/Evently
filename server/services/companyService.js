@@ -1,19 +1,19 @@
-const Post = require('../models/Post');
+const Company = require('../models/Company');
 const User = require('../models/User');
-const Comment = require('../models/Comment');
+const Event = require('../models/Event');
 
 const create = async (data) => {
-    const { imageUrl, userId, description } = data;
+    const { name, _id, address, description } = data;
 
-    const user = await User.findOne({ _id: userId });
+    const user = await User.findOne({ _id });
     if (!user) throw { error: { message: "User not found" } };
 
-    const post = new Post({ imageUrl, owner: userId, description });
-
-    user.posts.push(post);
+    const company = new Company({ name, address, description, ownerId: user._id });
+    
+    user.companyId = company._id;
     await user.save();
 
-    return await post.save();
+    return await company.save();
 };
 
 const getAll = async (_id) => {

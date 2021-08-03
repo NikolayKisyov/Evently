@@ -7,8 +7,8 @@ import { environment } from 'src/environments/environment';
 const apiURL = environment.apiURL;
 @Injectable()
 export class UserService {
-  user: IUser | null | undefined = undefined;
-
+  user: IUser | null | undefined;
+  
   constructor(
     private http: HttpClient
   ) { }
@@ -22,7 +22,7 @@ export class UserService {
   login(data: Object) {
     return this.http.post<IUser>(`${apiURL}/auth/login`, data, { withCredentials: true }).pipe(
       tap((user) => this.user = user)
-    );
+      );
   }
 
   logout() {

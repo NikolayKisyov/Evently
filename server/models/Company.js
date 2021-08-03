@@ -7,11 +7,11 @@ const companySchema = new Schema(
       required: true,
       unique: true,
     },
-    description: {
+    address: {
       type: String,
       required: true,
     },
-    address: {
+      description: {
       type: String,
       required: true,
     },

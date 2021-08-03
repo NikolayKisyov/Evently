@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const postService = require('../services/postService');
+const companyService = require('../services/companyService');
 
 const { auth } = require('../middlewares/auth');
 
 router.post('/create', async (req, res, next) => {
     try {
-        let result = await postService.create(req.body);
+        let result = await companyService.create(req.body);
         console.log(result);
         res.status(200).json({ result });
     } catch (error) {
