@@ -11,6 +11,10 @@ const companySchema = new Schema(
       type: String,
       required: true,
     },
+    address: {
+      type: String,
+      required: true,
+    },
     events: [
       {
         type: Schema.Types.ObjectId,

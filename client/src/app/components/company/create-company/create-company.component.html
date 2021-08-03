@@ -1,0 +1,28 @@
+<div class="container">
+<form #form="ngForm" class="example-form">
+  <h1>Create your company</h1>
+  <mat-form-field class="example-full-width" appearance="fill" hideRequiredMarker>
+      <mat-label>Company name</mat-label>
+        <input matInput type="text" name="name" #nameInput="ngModel" ngModel required minlength="3"/>
+        <div *ngIf="nameInput.invalid && nameInput.touched">
+          <mat-error *ngIf="nameInput.errors?.required">Company name is required</mat-error>
+          <mat-error *ngIf="nameInput.errors?.minlength">Company name should be atleast 3 characters long</mat-error>
+       </div>
+    </mat-form-field>
+    <p>
+      <mat-form-field class="example-full-width" appearance="fill" hideRequiredMarker>
+        <mat-label>Company address</mat-label>
+        <input matInput type="text" name="address" placeholder="Example boul. „Vitosha“ 27, 1000 Centre, Sofia" 
+        #addressInput="ngModel" ngModel required minlength="10"/>
+        <div *ngIf="addressInput.invalid && addressInput.touched">
+          <mat-error *ngIf="addressInput.errors?.required">Address is required</mat-error>
+          <mat-error *ngIf="addressInput.errors?.minlength">Address should be atleast 10 characters long</mat-error>
+       </div>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill" hideRequiredMarker>
+        <mat-label>Description</mat-label>
+        <textarea matInput type="textarea" name="description" #descriptionInput="ngModel" ngModel required minlength="10" maxlength="150"></textarea>
+      </mat-form-field>
+    </p>
+  </form>
+</div>

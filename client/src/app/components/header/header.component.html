@@ -6,10 +6,14 @@
         <mat-icon>event</mat-icon>
     </button>
     <span>Evently</span>
+    <a mat-button routerLink="/add-company">Add Company</a>
     <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>account_box</mat-icon> 
     </button>
-    <button *ngIf="isLogged" (click)="logout()" mat-button>Logout</button>
-    <a mat-button routerLink="/authenticate">Authenticate</a>
+    <button *ngIf="isLogged; else loggedOut" (click)="logout()" mat-button>Logout</button>
+    <ng-template #loggedOut>
+        <a mat-button routerLink="/authenticate">Authenticate</a>
+    </ng-template>
+    
 </mat-toolbar>

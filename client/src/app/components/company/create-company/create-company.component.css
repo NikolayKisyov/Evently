@@ -1,0 +1,23 @@
+.example-form {
+  min-width: 150px;
+  max-width: 750px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: grey;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+td {
+  padding-right: 8px;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+h1 {
+  text-align-last: center;
+}

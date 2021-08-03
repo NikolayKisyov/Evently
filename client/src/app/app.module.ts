@@ -11,6 +11,7 @@ import { UserModule } from './components/user/user.module';
 import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
+import { CompanyModule } from './components/company/company.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { HomeComponent } from './components/home/home.component';
   ],
   imports: [
     BrowserModule,
+    CompanyModule,
     FormsModule,
     UserModule,
     HttpClientModule,
