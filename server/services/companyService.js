@@ -27,7 +27,7 @@ const createEvent = async (data) => {
     if (!company) throw { error: { message: "No such company" } };
     
     console.log(company);
-    const event = new Event({ name, date, time, location, description, imageUrl: 'test', companyId: company });
+    const event = new Event({ name, date, time, location, description, imageUrl: 'test', companyId: company._id});
    
     company.events.push(event);
     await company.save();
