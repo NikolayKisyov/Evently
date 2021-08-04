@@ -3,15 +3,26 @@ const companyService = require('../services/companyService');
 
 const { auth } = require('../middlewares/auth');
 
-router.post('/create', async (req, res, next) => {
+router.post('/createCompany', async (req, res, next) => {
     try {
-        let result = await companyService.create(req.body);
+        let result = await companyService.createCompany(req.body);
         console.log(result);
         res.status(200).json({ result });
     } catch (error) {
         return res.status(400).json(error);
     }
 });
+
+router.post('/createEvent', async (req, res, next) => {
+    try {
+        let result = await companyService.createEvent(req.body);
+        console.log(result);
+        res.status(200).json({ result });
+    } catch (error) {
+        return res.status(400).json(error);
+    }
+});
+
 
 router.get('/:_id/all', auth, async (req, res, next) => {
     try {

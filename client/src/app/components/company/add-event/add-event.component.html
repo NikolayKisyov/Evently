@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<div class="testbox">
+  <form #form="ngForm" (ngSubmit)="createEvent(form)">
+    <div class="banner">
+      <h1>Create Your Event</h1>
+    </div>
+    <div class="item">
+      <p>Event Name</p>
+      <input type="text" name="name" #nameInput="ngModel" ngModel required minlength="5" maxlength="20"/>
+      <div *ngIf="nameInput.invalid && nameInput.touched">
+        <mat-error *ngIf="nameInput.errors?.required">Event name is required</mat-error>
+        <mat-error *ngIf="nameInput.errors?.minlength">Event name should be atleast 5 characters long</mat-error>
+        <mat-error *ngIf="nameInput.errors?.maxlength">Event name shouldn't be more than 20 characters long</mat-error>
+     </div>
+    </div>
+    <div class="item">
+        <p>Date of Event</p>
+        <input type="date" name="date" #dateInput="ngModel" ngModel required />
+        <i class="fas fa-calendar-alt"></i>
+        <div *ngIf="dateInput.invalid && dateInput.touched">
+          <mat-error *ngIf="dateInput.errors?.required">Event date is required</mat-error>
+       </div>
+    </div>
+    <div class="item">
+        <p>Time of Event</p>
+        <input type="time" name="time" #timeInput="ngModel" ngModel required />
+        <!-- <i class="fas fa-clock"></i> -->
+        <div *ngIf="timeInput.invalid && timeInput.touched">
+          <mat-error *ngIf="timeInput.errors?.required">Event time is required</mat-error>
+       </div>
+    </div>
+    <div class="item">
+      <p>Location of Event</p>
+      <input type="text" name="location" #locationInput="ngModel" ngModel required/>
+      <div *ngIf="locationInput.invalid && locationInput.touched">
+        <mat-error *ngIf="locationInput.errors?.required">Event time is required</mat-error>
+     </div>
+    </div>
+    <div class="item">
+      <p>Description of Event</p>
+      <textarea rows="3" type="textarea" name="description" #descriptionInput="ngModel" ngModel required minlength="10" maxlength="610"></textarea>
+      <div *ngIf="descriptionInput.invalid && descriptionInput.touched">
+        <mat-error *ngIf="descriptionInput.errors?.required">Description is required</mat-error>
+        <mat-error *ngIf="descriptionInput.errors?.minlength">Description should be atleast 10 characters long</mat-error>
+     </div>
+    </div>
+    <!-- <div class="item">
+        <span>
+            <p>Image here</p>
+            <input type="file" #file1 placeholder="Choose file">
+          </span>
+    </div> -->
+    <div class="btn-block">
+      <button type="submit">SEND</button>
+    </div>
+  </form>
+</div>

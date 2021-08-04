@@ -5,12 +5,14 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { CompanyRoutingModule } from './company-routing.module';
 import { FormsModule } from '@angular/forms';
 import { CompanyService } from 'src/app/services/company/company.service';
+import { AddEventComponent } from './add-event/add-event.component';
 
 
 
 @NgModule({
   declarations: [
-    CreateCompanyComponent
+    CreateCompanyComponent,
+    AddEventComponent
   ],
   imports: [
     MaterialModule,

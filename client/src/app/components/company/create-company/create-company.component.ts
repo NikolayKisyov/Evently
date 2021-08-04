@@ -17,7 +17,7 @@ export class CreateCompanyComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  async create(form: NgForm) {
+  async createCompany(form: NgForm) {
     console.log(form.value);
 
     if (form.invalid) {
@@ -34,9 +34,8 @@ export class CreateCompanyComponent implements OnInit {
       _id: userId
     };
 
-    this.companyService.create(data).subscribe({
+    this.companyService.createCompany(data).subscribe({
       next: () => {
-        form.reset();
         this.router.navigate(['/']);
       },
       error: (err) => {

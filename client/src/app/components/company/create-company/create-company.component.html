@@ -1,8 +1,8 @@
 <div class="container">
-<form #form="ngForm" class="example-form" (ngSubmit)="create(form)">
+<form #form="ngForm" class="example-form" (ngSubmit)="createCompany(form)">
   <h1>Create your company</h1>
   <mat-form-field class="example-full-width" appearance="fill" hideRequiredMarker>
-      <mat-label>Company name</mat-label>
+      <mat-label class="labelColor">Company name</mat-label>
         <input matInput type="text" name="name" #nameInput="ngModel" ngModel required minlength="3"/>
         <div *ngIf="nameInput.invalid && nameInput.touched">
           <mat-error *ngIf="nameInput.errors?.required">Company name is required</mat-error>
@@ -11,7 +11,7 @@
     </mat-form-field>
     <p>
       <mat-form-field class="example-full-width" appearance="fill" hideRequiredMarker>
-        <mat-label>Company address</mat-label>
+        <mat-label class="labelColor">Company address</mat-label>
         <input matInput type="text" name="address" placeholder="Example boul. „Vitosha“ 27, 1000 Centre, Sofia" 
         #addressInput="ngModel" ngModel required minlength="10"/>
         <div *ngIf="addressInput.invalid && addressInput.touched">
@@ -20,7 +20,7 @@
        </div>
       </mat-form-field>
       <mat-form-field class="example-full-width" appearance="fill" hideRequiredMarker>
-        <mat-label>Description</mat-label>
+        <mat-label class="labelColor">Description</mat-label>
         <textarea matInput type="textarea" name="description" #descriptionInput="ngModel" ngModel required minlength="10" maxlength="150"></textarea>
         <div *ngIf="descriptionInput.invalid && descriptionInput.touched">
           <mat-error *ngIf="descriptionInput.errors?.required">Description is required</mat-error>
@@ -28,6 +28,8 @@
        </div>
       </mat-form-field>
     </p>
-    <button mat-raised-button color="accent">Add</button>
+    <div class="dsa">
+    <button mat-raised-button class="button-adjust">Add</button>
+  </div>
   </form>
 </div>
