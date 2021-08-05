@@ -42,18 +42,8 @@ const getById = async (id) => {
     return company;
 };
 
-const getAll = async (_id) => {
-    
-    let res = await User.findOne({ _id }).select('following').lean();
-    let followers = res.following;
-    let posts = await Post.find({ owner: { $in: followers } }).populate({ path: 'owner', select: 'username profileImage' }).populate({ path: 'comments', populate: { path: 'user' } }).lean();
-
-    return posts;
-};
-
 module.exports = {
     createCompany,
     createEvent,
-    getAll,
     getById,
 };
