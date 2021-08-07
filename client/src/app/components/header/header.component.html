@@ -6,8 +6,10 @@
         <mat-icon>event</mat-icon>
     </button>
     <span>Evently</span>
+    <div  *ngIf="isLogged">
     <a mat-button routerLink="/add-company">Add Company</a>
     <a mat-button routerLink="/add-event">Add Event</a>
+    </div>
     <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>account_box</mat-icon> 

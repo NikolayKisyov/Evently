@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiURL: "http://localhost:5000"
+  apiURL: "http://localhost:5000",
+  CLAUDINARY_API_URL: 'https://api.cloudinary.com/v1_1/dvqwgulf4',
+  CLAUDINARY_PRESET_NAME: 'tpffnmc7'
 };
 
 /*

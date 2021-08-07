@@ -1,1 +1,36 @@
 <p>HOME PAGE WORKS!</p>
+
+<!-- <div *ngIf="events | json ">
+    <div *ngFor="let event of events">
+        <h2>{{event.name}}</h2>
+    </div>
+</div> -->
+    
+<ng-template [ngIf]="events">
+  <div *ngFor="let event of events">
+    <div class="event-container">
+      <h3 class="year">2020</h3>
+<img src="{{event.imageUrl}}" /> 
+      <div class="event">
+        <div class="event-left">
+          <div class="event-date">
+            <div class="date">{{event.date.getDay()}}</div>
+            <div class="month">Nov</div>
+          </div>
+        </div>
+
+        <div class="event-right">
+          <h3 class="event-title">{{event.name}}</h3>
+
+          <div class="event-description">
+           {{event.description}}
+          </div>
+
+          <div class="event-timing">
+            <!-- <img src="images/time.png" alt="" /> -->10:00 am
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

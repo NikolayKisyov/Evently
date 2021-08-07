@@ -17,7 +17,7 @@ const createCompany = async (data) => {
 };
 
 const createEvent = async (data) => {
-    const { name, date, time, location, description, _id } = data;
+    const { name, date, time, location, imageUrl, description, _id } = data;
 
     const user = await User.findOne({ _id });
     if (!user) throw { error: { message: "User not found" } };
@@ -27,12 +27,18 @@ const createEvent = async (data) => {
     if (!company) throw { error: { message: "No such company" } };
     
     console.log(company);
-    const event = new Event({ name, date, time, location, description, imageUrl: 'test', companyId: company._id});
+    const event = new Event({ name, date, time, location, description, imageUrl, companyId: company._id});
    
     company.events.push(event);
     await company.save();
     
     return await event.save();
+};
+
+const getAllEvents = async () => {
+    let res = await Event.find().lean(); 
+    console.log(res);
+    return res;
 };
 
 const getById = async (id) => {
@@ -45,5 +51,6 @@ const getById = async (id) => {
 module.exports = {
     createCompany,
     createEvent,
+    getAllEvents,
     getById,
 };

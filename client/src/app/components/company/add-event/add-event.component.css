@@ -25,7 +25,7 @@ h1 {
   z-index: 2;
 }
 .testbox {
-  /* max-width: 950px; */
+  width: 650px;
   display: flex;
   justify-content: center;
   align-items: center;

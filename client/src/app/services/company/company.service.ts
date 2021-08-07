@@ -9,7 +9,9 @@ import { environment } from 'src/environments/environment';
 const apiURL = environment.apiURL;
 @Injectable()
 export class CompanyService {
-  constructor(private userService: UserService, private http: HttpClient) {}
+  constructor(
+    private userService: UserService,
+     private http: HttpClient) {}
 
   createCompany(data: Object) {
     return this.http.post<ICompany>(`${apiURL}/company/createCompany`, data, {
@@ -19,6 +21,12 @@ export class CompanyService {
 
   createEvent(data: Object) {
     return this.http.post<IEvent>(`${apiURL}/company/createEvent`, data, {
+      withCredentials: true,
+    });
+  }
+
+  getEvents() {
+    return this.http.get<IEvent[]>(`${apiURL}/company/events`,{
       withCredentials: true,
     });
   }
