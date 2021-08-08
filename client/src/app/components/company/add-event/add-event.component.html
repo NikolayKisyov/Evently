@@ -33,7 +33,7 @@
       <p>Location of Event</p>
       <input type="text" name="location" #locationInput="ngModel" ngModel required/>
       <div *ngIf="locationInput.invalid && locationInput.touched">
-        <mat-error *ngIf="locationInput.errors?.required">Event time is required</mat-error>
+        <mat-error *ngIf="locationInput.errors?.required">Location is required</mat-error>
      </div>
     </div>
     <div class="item">

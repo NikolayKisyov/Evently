@@ -4,9 +4,16 @@
     margin: 0 auto;
   }
   
-  .event-container h3.year {
+  /* .event-container h3.year {
     font-size: 40px;
     text-align: center;
+    border-bottom: 2px solid #b1b1b1;
+  } */
+  
+  h3.year {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 5px;
     border-bottom: 2px solid #b1b1b1;
   }
   
@@ -49,8 +56,17 @@
   
   .event .event-right h3.event-title {
     font-size: 24px;
-    margin: 24px 0 10px 0;
-    color: #218bbb;
+    margin: 10px 0 10px 0;
+    color: #c2185b;
+    text-transform: uppercase;
+  }
+
+  .event .event-right h5.event-title {
+    font-size: 15px;
+    margin: -9px 0 10px 0;
+    margin-left: 1px;
+    color: #222222;
+    font-weight: bold;
     text-transform: uppercase;
   }
   

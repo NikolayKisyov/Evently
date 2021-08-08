@@ -21,7 +21,7 @@ export class AddEventComponent implements OnInit {
   }
 
   async createEvent(form: NgForm) {
-    console.log(form.value);
+    console.log(form.value.time);
 
     if (form.invalid) {
       return;

@@ -3,7 +3,7 @@ const companyService = require("../services/companyService");
 
 const { auth } = require("../middlewares/auth");
 
-router.post("/createCompany", async (req, res, next) => {
+router.post("/createCompany", auth, async (req, res, next) => {
   try {
     let result = await companyService.createCompany(req.body);
     console.log(result);
@@ -13,7 +13,7 @@ router.post("/createCompany", async (req, res, next) => {
   }
 });
 
-router.post("/createEvent", async (req, res, next) => {
+router.post("/createEvent", auth, async (req, res, next) => {
   try {
     let result = await companyService.createEvent(req.body);
     console.log(result);

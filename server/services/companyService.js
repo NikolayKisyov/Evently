@@ -36,7 +36,7 @@ const createEvent = async (data) => {
 };
 
 const getAllEvents = async () => {
-    let res = await Event.find().lean(); 
+    let res = await Event.find().populate({path: 'companyId'}).lean(); 
     console.log(res);
     return res;
 };

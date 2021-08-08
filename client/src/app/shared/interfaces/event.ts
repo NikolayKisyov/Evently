@@ -4,6 +4,8 @@ export interface IEvent {
   description: string;
   location: string;
   date: Date;
+  dateMonth: string;
+  dateDay: number;
   imageUrl: string;
   time: string;
   companyId: {
