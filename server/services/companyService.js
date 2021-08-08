@@ -41,9 +41,14 @@ const getAllEvents = async () => {
     return res;
 };
 
-const getById = async (id) => {
-    let company = await Company.findOne({ _id: id });
-    
+const getEventById = async (id) => {
+    let event = await Event.findOne({ _id: id }).lean();
+
+    return event;
+};
+
+const getCompanyById = async (id) => {
+    let company = await Company.findOne({ _id: id }).populate({ path: 'ownerId' }).lean();
 
     return company;
 };
@@ -52,5 +57,6 @@ module.exports = {
     createCompany,
     createEvent,
     getAllEvents,
-    getById,
+    getEventById,
+    getCompanyById
 };

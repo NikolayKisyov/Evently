@@ -4,10 +4,10 @@
     </div>
 </div> -->
     
-<ng-template [ngIf]="events">
+<ng-template *ngIf="isLogged; else loggedOut" [ngIf]="events">
   <h3 class="year">Events</h3>
   <div *ngFor="let event of events">
-    <div class="event-container">
+    <div class="event-container" [routerLink]="['/event-details', event._id]">
      <!-- <img src="{{event.imageUrl}}" />  -->
       <div class="event">
         <div class="event-left">
@@ -30,5 +30,13 @@
         </div>
       </div>
     </div>
+  </div>
+</ng-template>
+
+<ng-template #loggedOut>
+  <h3 class="year">Welcome!</h3>
+  <div class="container homeContainer">
+    <h2> Sign up to get the full experience of Evently!</h2>
+    <a mat-button routerLink="/authenticate">Authenticate</a>
   </div>
 </ng-template>

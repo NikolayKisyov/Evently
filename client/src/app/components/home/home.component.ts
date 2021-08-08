@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { CompanyService } from 'src/app/services/company/company.service';
 import { IEvent } from 'src/app/shared/interfaces/event';
 
@@ -10,6 +10,10 @@ import { IEvent } from 'src/app/shared/interfaces/event';
 export class HomeComponent {
   events: IEvent[] | undefined;
 
+  get isLogged(): boolean {
+    return localStorage.user != null;
+  }
+  
   constructor(private companyService: CompanyService) {
     this.loadEvents();
   }

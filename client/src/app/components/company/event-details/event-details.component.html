@@ -1,0 +1,55 @@
+<div *ngIf="event">
+  <article class="card card--wide">
+    <div class="card__media">
+      <img src="{{event.imageUrl}}" alt="Card image" />
+      <div class="card__date">
+        <span class="date--day">{{event.dateDay}}</span>
+        <span class="date--month">{{event.dateMonth}}</span>
+        <span class="date--month">{{event.dateYear}}</span>
+
+      </div>
+    </div>
+   
+    <div class="card__content">
+      <header class="card__header">
+        <h2 class="card__title">{{event.name}}</h2>
+        <div class="card__subtitle">{{event.time}}</div>
+        <div class="card__subtitle">{{event.location}}</div>
+      </header>
+      <p class="card__excerpt">{{event.description}}</p>
+   
+      <footer class="card__meta" role="contentinfo">
+        <span class="card__post-date">6 min ago</span>
+        <span class="card__comments">39 comments</span>
+      </footer>
+    </div>
+   </article>
+     
+     <!-- DIVIDED -->
+<div *ngIf="company">
+   <article class="card card">
+    <!-- <div class="card__media">
+      <img src="{{event.imageUrl}}" alt="Card image" />
+      <div class="card__date">
+        <span class="date--day">{{event.dateDay}}</span>
+        <span class="date--month">{{event.dateMonth}}</span>
+        <span class="date--month">{{event.dateYear}}</span>
+
+      </div>
+    </div> -->
+   
+    <div class="card__content">
+      <header class="card__header">
+        <h2 class="card__title">{{company.name}}</h2>
+        <div class="card__subtitle">{{company.address}}</div>
+      </header>
+      <p class="card__excerpt">{{company.description}}</p>
+   
+      <footer class="card__meta" role="contentinfo">
+        <span class="card__post-date">{{company.ownerId.firstName}}</span>
+        <span class="card__comments">39 comments</span>
+      </footer>
+    </div>
+   </article>
+</div>
+</div>

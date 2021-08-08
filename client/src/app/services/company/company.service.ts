@@ -30,4 +30,12 @@ export class CompanyService {
       withCredentials: true,
     });
   }
+
+  getEvent(id: string) {
+    return this.http.get<IEvent>(`${apiURL}/company/event/${id}`, { withCredentials: true });
+  }
+
+  getCompany(id: string) {
+    return this.http.get<ICompany>(`${apiURL}/company/${id}`, { withCredentials: true });
+  }
 }

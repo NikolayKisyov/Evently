@@ -6,11 +6,11 @@
     </div>
     <div class="item">
       <p>Event Name</p>
-      <input type="text" name="name" #nameInput="ngModel" ngModel required minlength="5" maxlength="20"/>
+      <input type="text" name="name" #nameInput="ngModel" ngModel required minlength="5" maxlength="40"/>
       <div *ngIf="nameInput.invalid && nameInput.touched">
         <mat-error *ngIf="nameInput.errors?.required">Event name is required</mat-error>
         <mat-error *ngIf="nameInput.errors?.minlength">Event name should be atleast 5 characters long</mat-error>
-        <mat-error *ngIf="nameInput.errors?.maxlength">Event name shouldn't be more than 20 characters long</mat-error>
+        <mat-error *ngIf="nameInput.errors?.maxlength">Event name shouldn't be more than 40 characters long</mat-error>
      </div>
     </div>
     <div class="item">
@@ -51,7 +51,7 @@
           </span>
     </div>
     <div class="btn-block">
-      <button type="submit">SEND</button>
+      <button type="submit">Create</button>
     </div>
   </form>
 </div>

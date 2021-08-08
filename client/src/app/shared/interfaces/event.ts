@@ -6,6 +6,7 @@ export interface IEvent {
   date: Date;
   dateMonth: string;
   dateDay: number;
+  dateYear: number;
   imageUrl: string;
   time: string;
   companyId: {

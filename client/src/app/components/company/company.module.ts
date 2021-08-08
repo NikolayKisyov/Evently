@@ -6,13 +6,15 @@ import { CompanyRoutingModule } from './company-routing.module';
 import { FormsModule } from '@angular/forms';
 import { CompanyService } from 'src/app/services/company/company.service';
 import { AddEventComponent } from './add-event/add-event.component';
+import { EventDetailsComponent } from './event-details/event-details.component';
 
 
 
 @NgModule({
   declarations: [
     CreateCompanyComponent,
-    AddEventComponent
+    AddEventComponent,
+    EventDetailsComponent
   ],
   imports: [
     MaterialModule,
