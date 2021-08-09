@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,11 +11,16 @@ import { environment as config } from 'src/environments/environment';
   styleUrls: ['./add-event.component.css'],
 })
 export class AddEventComponent implements OnInit {
+  now: any;
+
   selectedFile: File | undefined;
-
+  
   constructor(private companyService: CompanyService, private router: Router) {}
-
-  ngOnInit(): void {}
+  
+  ngOnInit() {
+    const datePipe = new DatePipe('en-Us');
+    this.now = datePipe.transform(new Date(), 'yyyy-MM-dd');
+  }
 
   onFileChanged(event: any) {
     this.selectedFile = event.target.files[0];

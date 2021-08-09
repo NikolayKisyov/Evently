@@ -1,14 +1,7 @@
-<!-- <div *ngIf="events | json ">
-    <div *ngFor="let event of events">
-        <h2>{{event.name}}</h2>
-    </div>
-</div> -->
-    
 <ng-template *ngIf="isLogged; else loggedOut" [ngIf]="events">
   <h3 class="year">Events</h3>
   <div *ngFor="let event of events">
     <div class="event-container" [routerLink]="['/event-details', event._id]">
-     <!-- <img src="{{event.imageUrl}}" />  -->
       <div class="event">
         <div class="event-left">
           <div class="event-date">
@@ -25,7 +18,7 @@
           </div>
 
           <div class="event-timing">
-            <!-- <img src="images/time.png" alt="" /> -->{{event.time}}
+            {{event.time}}
           </div>
         </div>
       </div>
@@ -37,6 +30,6 @@
   <h3 class="year">Welcome!</h3>
   <div class="container homeContainer">
     <h2> Sign up to get the full experience of Evently!</h2>
-    <a mat-button routerLink="/authenticate">Authenticate</a>
+    <a mat-button class="matBtn" routerLink="/authenticate">Authenticate</a>
   </div>
 </ng-template>

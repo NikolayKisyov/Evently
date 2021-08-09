@@ -15,7 +15,7 @@
     </div>
     <div class="item">
         <p>Date of Event</p>
-        <input type="date" name="date" #dateInput="ngModel" ngModel required />
+        <input type="date" name="date" #dateInput="ngModel"   [min]="now" ngModel required />
         <i class="fas fa-calendar-alt"></i>
         <div *ngIf="dateInput.invalid && dateInput.touched">
           <mat-error *ngIf="dateInput.errors?.required">Event date is required</mat-error>
