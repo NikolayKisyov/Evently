@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddEventComponent } from './add-event/add-event.component';
 import { CreateCompanyComponent } from './create-company/create-company.component';
+import { EditEventComponent } from './edit-event/edit-event.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
 
 const routes: Routes = [
@@ -24,6 +25,14 @@ const routes: Routes = [
   {
     path: 'add-event',
     component: AddEventComponent,
+    data: {
+      authenticationRequired: true,
+      authenticationFailureRedirectUrl: '/login',
+    }
+  },
+  {
+    path: 'edit-event',
+    component: EditEventComponent,
     data: {
       authenticationRequired: true,
       authenticationFailureRedirectUrl: '/login',

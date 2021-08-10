@@ -1,3 +1,5 @@
+import { IUser } from "./user";
+
 export interface IEvent {
   _id: string;
   name: string;
@@ -8,11 +10,13 @@ export interface IEvent {
   dateDay: number;
   dateYear: number;
   imageUrl: string;
+  isOwner: boolean;
   time: string;
   companyId: {
     _id: string;
     name: string;
     address: string;
     description: string;
+    ownerId : IUser;
   };
 }

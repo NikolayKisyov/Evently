@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { CompanyService } from 'src/app/services/company/company.service';
 import { AddEventComponent } from './add-event/add-event.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
+import { EditEventComponent } from './edit-event/edit-event.component';
 
 
 
@@ -14,7 +15,8 @@ import { EventDetailsComponent } from './event-details/event-details.component';
   declarations: [
     CreateCompanyComponent,
     AddEventComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    EditEventComponent
   ],
   imports: [
     MaterialModule,

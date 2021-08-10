@@ -13,6 +13,7 @@
         <div class="event-right">
           <h3 class="event-title">{{event.name}}</h3>
           <h5 class="event-title">Presented by: {{event.companyId.name}}</h5>
+          
           <div class="event-description">
            {{event.description}}
           </div>
@@ -20,6 +21,12 @@
           <div class="event-timing">
             {{event.time}}
           </div>
+          <span *ngIf="event.isOwner" class="event-icons">
+            <a>
+            <mat-icon title="Edit your event" class="editBtn" routerLink="/edit-event">edit</mat-icon>
+           </a>
+            <mat-icon title="Delete your event" class="deleteBtn">delete</mat-icon>
+          </span>
         </div>
       </div>
     </div>

@@ -12,6 +12,7 @@ import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { CompanyModule } from './components/company/company.module';
+import { EditEventComponent } from './components/company/edit-event/edit-event.component';
 
 @NgModule({
   declarations: [

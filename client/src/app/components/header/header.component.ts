@@ -11,6 +11,10 @@ export class HeaderComponent implements OnInit {
   get isLogged(): boolean {
     return localStorage.user != null;
   }
+
+  get isOwner(): boolean {
+    return JSON.parse(localStorage.getItem('user')!).user.isOwner;
+  }
   constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {}

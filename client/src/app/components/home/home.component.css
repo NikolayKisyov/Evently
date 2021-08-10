@@ -15,6 +15,21 @@
   color:white;
 }
 
+.editBtn {
+  color:rgb(46, 155, 243);
+}
+
+.deleteBtn {
+  color:red;
+}
+
+.matIcons{
+  position: absolute;
+  right: 230px;  
+  width: 200px;
+  height: 150px;
+}
+
 .homeContainer {
   display: flex;
   flex-direction: column;
@@ -48,7 +63,7 @@
     border-radius: 8px;
     margin: 32px 0;
   }
-  
+
   .event .event-left {
     background: #222;
     min-width: 82px;
@@ -104,6 +119,17 @@
     padding: 8px;
     border-radius: 16px;
     margin: 24px 0;
+    font-size: 14px;
+  }
+
+  .event .event-right .event-icons {
+    display: flex;
+    position: absolute;
+    top: 385px;
+    padding-left: 540px;
+    padding-bottom: -68px;
+    height: -187px;
+    border-radius: -3px;
     font-size: 14px;
   }
   

@@ -23,11 +23,13 @@ const register = async (data) => {
 const login = async (data) => {
 
   const { username, password } = data;
-  let user = await User.findOne({ username });
+  let user = await User.findOne({ username }).populate({path: 'companyId'});
   if (!user) throw { error: { message: "User not found" } };
 
   let isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) throw { error: { message: "Invalid username or password" } };
+  console.log(user.companyId);
+  let isOwner = user.companyId !== undefined;
 
   let token = jwt.sign({ _id: user._id, username: user.username }, SECRET);
   //let token = jwt.sign({ _id: user._id, email: user.email }, SECRET)
@@ -36,6 +38,7 @@ const login = async (data) => {
     user: {
       _id: user._id,
       username: user.username,
+      isOwner
     },
     token,
   };

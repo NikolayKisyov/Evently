@@ -22,7 +22,7 @@ export class HomeComponent {
     this.events = undefined;
     this.companyService.getEvents().subscribe((events) => {
       events.forEach((r) => this.setDateProperties(r));
-      events.forEach((r) => console.log(r));
+      events.forEach((r) => this.checkOwnerPosts(r));
       this.events = events;
     });
   }
@@ -31,5 +31,12 @@ export class HomeComponent {
     let newDate = new Date(event.date);
     event.dateMonth = newDate.toLocaleString('default', { month: 'short' });
     event.dateDay = newDate.getDate();
+  }
+
+  checkOwnerPosts(event: IEvent) {
+    if(this.isLogged){
+      const userId = JSON.parse(localStorage.getItem('user')!).user._id;
+     event.companyId.ownerId == userId ? event.isOwner = true : event.isOwner = false;
+    }
   }
 }
