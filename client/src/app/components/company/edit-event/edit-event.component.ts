@@ -1,8 +1,10 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CompanyService } from 'src/app/services/company/company.service';
+import { IEvent } from 'src/app/shared/interfaces/event';
 import { environment as config } from 'src/environments/environment';
 
 @Component({
@@ -12,20 +14,29 @@ import { environment as config } from 'src/environments/environment';
 })
 export class EditEventComponent implements OnInit {
   now: any;
-
-  selectedFile: File | undefined;
+  event: IEvent | undefined;
   
-  constructor(private companyService: CompanyService, private router: Router) {}
+  constructor(
+    private companyService: CompanyService, 
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+    ) {}
   
   ngOnInit() {
+    this.fetchEvent();
     const datePipe = new DatePipe('en-Us');
     this.now = datePipe.transform(new Date(), 'yyyy-MM-dd');
   }
 
-  onFileChanged(event: any) {
-    this.selectedFile = event.target.files[0];
-  }
 
+  fetchEvent(): void {
+    this.event = undefined;
+    const id = this.activatedRoute.snapshot.params.eventId;
+    this.companyService.getEvent(id).subscribe((event) => {
+      console.log(event);
+      this.event = event;
+    });
+  }
   async editEvent(form: NgForm) {
     console.log(form.value.time);
 
@@ -35,35 +46,19 @@ export class EditEventComponent implements OnInit {
 
     const userId = JSON.parse(localStorage.getItem('user')!).user._id;
     console.log(userId);
-    console.log(this.selectedFile);
-    let cloudinaryData = new FormData();
-    cloudinaryData.append('upload_preset', config.CLAUDINARY_PRESET_NAME);
-    cloudinaryData.append('file', this.selectedFile!);
-
-    let cloudinaryResponse = await fetch(
-      `${config.CLAUDINARY_API_URL}/image/upload`,
-      {
-        method: 'POST',
-        body: cloudinaryData,
-      }
-    );
-
-    let image = await cloudinaryResponse.json();
-    let imageUrl = image.secure_url;
-
-    console.log(imageUrl);
-
+    const id = this.activatedRoute.snapshot.params.eventId;
     const data = {
       name: form.value.name,
       date: form.value.date,
-      imageUrl,
       time: form.value.time,
       location: form.value.location,
       description: form.value.description,
-      _id: userId,
+      userId,
     };
+
+    console.log(userId,data);
 //EDITEVENTTODO
-    this.companyService.createEvent(data).subscribe({
+    this.companyService.editEvent(data, id).subscribe({
       next: () => {
         this.router.navigate(['/']);
       },

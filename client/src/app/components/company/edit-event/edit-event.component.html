@@ -7,7 +7,7 @@
     </div>
     <div class="item">
       <p>Event Name</p>
-      <input type="text" name="name" #nameInput="ngModel" ngModel required minlength="5" maxlength="40"/>
+      <input type="text" name="name" #nameInput="ngModel" [(ngModel)]="event!.name" required minlength="5" maxlength="40"/>
       <div *ngIf="nameInput.invalid && nameInput.touched">
         <mat-error *ngIf="nameInput.errors?.required">Event name is required</mat-error>
         <mat-error *ngIf="nameInput.errors?.minlength">Event name should be atleast 5 characters long</mat-error>
@@ -16,39 +16,33 @@
     </div>
     <div class="item">
         <p>Date of Event</p>
-        <input type="date" name="date" #dateInput="ngModel"   [min]="now" ngModel required />
+        <input type="date" name="date" #dateInput="ngModel" [min]="now" ngModel required />
         <i class="fas fa-calendar-alt"></i>
-        <div *ngIf="dateInput.invalid && dateInput.touched">
+        <div *ngIf="dateInput.invalid">
           <mat-error *ngIf="dateInput.errors?.required">Event date is required</mat-error>
        </div>
     </div>
     <div class="item">
         <p>Time of Event</p>
-        <input type="time" name="time" #timeInput="ngModel" ngModel required />
+        <input type="time" name="time" #timeInput="ngModel" [(ngModel)]="event!.time" required />
         <div *ngIf="timeInput.invalid && timeInput.touched">
           <mat-error *ngIf="timeInput.errors?.required">Event time is required</mat-error>
        </div>
     </div>
     <div class="item">
       <p>Location of Event</p>
-      <input type="text" name="location" #locationInput="ngModel" ngModel required/>
+      <input type="text" name="location" #locationInput="ngModel" [(ngModel)]="event!.location" required/>
       <div *ngIf="locationInput.invalid && locationInput.touched">
         <mat-error *ngIf="locationInput.errors?.required">Location is required</mat-error>
      </div>
     </div>
     <div class="item">
       <p>Description of Event</p>
-      <textarea rows="3" type="textarea" name="description" #descriptionInput="ngModel" ngModel required minlength="10" maxlength="610"></textarea>
+      <textarea rows="3" type="textarea" name="description" #descriptionInput="ngModel" [(ngModel)]="event!.description" required minlength="10" maxlength="610"></textarea>
       <div *ngIf="descriptionInput.invalid && descriptionInput.touched">
         <mat-error *ngIf="descriptionInput.errors?.required">Description is required</mat-error>
         <mat-error *ngIf="descriptionInput.errors?.minlength">Description should be atleast 10 characters long</mat-error>
      </div>
-    </div>
-    <div class="item">
-        <span>
-            <p>Image here</p>
-            <input type="file" name="image" ngModel placeholder="Choose file" (change)="onFileChanged($event)">
-          </span>
     </div>
     <div class="btn-block">
       <button type="submit">Update</button>

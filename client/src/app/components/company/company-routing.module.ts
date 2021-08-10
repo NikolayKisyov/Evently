@@ -31,7 +31,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'edit-event',
+    path: 'edit-event/:eventId',
     component: EditEventComponent,
     data: {
       authenticationRequired: true,

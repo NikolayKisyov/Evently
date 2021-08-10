@@ -17,15 +17,15 @@
           <div class="event-description">
            {{event.description}}
           </div>
-
+         
           <div class="event-timing">
             {{event.time}}
           </div>
           <span *ngIf="event.isOwner" class="event-icons">
             <a>
-            <mat-icon title="Edit your event" class="editBtn" routerLink="/edit-event">edit</mat-icon>
+            <mat-icon title="Edit your event" class="editBtn" routerLink="/edit-event/{{event._id}}">edit</mat-icon>
            </a>
-            <mat-icon title="Delete your event" class="deleteBtn">delete</mat-icon>
+            <mat-icon title="Delete your event" class="deleteBtn" (click)="delete(event._id)">delete</mat-icon>
           </span>
         </div>
       </div>

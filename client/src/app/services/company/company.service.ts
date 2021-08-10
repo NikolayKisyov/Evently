@@ -24,6 +24,17 @@ export class CompanyService {
       withCredentials: true,
     });
   }
+  editEvent(data: Object, id: string) {
+    return this.http.post<IEvent>(`${apiURL}/company/editEvent/${id}`, data, {
+      withCredentials: true,
+    });
+  }
+
+  deleteEvent(id: string, data: Object) {
+    return this.http.post<IEvent>(`${apiURL}/company/deleteEvent/${id}`, data, {
+      withCredentials: true,
+    });
+  }
 
   getEvents() {
     return this.http.get<IEvent[]>(`${apiURL}/company/events`,{

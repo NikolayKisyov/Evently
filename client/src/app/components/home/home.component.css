@@ -123,8 +123,7 @@
   }
 
   .event .event-right .event-icons {
-    display: flex;
-    position: absolute;
+    display: flex;  
     top: 385px;
     padding-left: 540px;
     padding-bottom: -68px;
