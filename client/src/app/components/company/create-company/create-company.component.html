@@ -1,6 +1,8 @@
 <div class="container">
 <form #form="ngForm" class="example-form" (ngSubmit)="createCompany(form)">
   <h1>Create your company</h1>
+  <mat-error *ngIf="serverUserError">Invalid username or password</mat-error>
+
   <mat-form-field class="example-full-width" appearance="fill" hideRequiredMarker>
       <mat-label class="labelColor">Company name</mat-label>
         <input matInput type="text" name="name" #nameInput="ngModel" ngModel required minlength="3"/>

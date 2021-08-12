@@ -28,6 +28,12 @@ const userSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'Company'
     },
+    eventsAttending: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Event",
+      },
+    ],
     following: [
       {
         type: Schema.Types.ObjectId,

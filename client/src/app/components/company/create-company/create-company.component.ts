@@ -10,10 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-company.component.css'],
 })
 export class CreateCompanyComponent implements OnInit {
-  constructor(
-    private companyService: CompanyService,
-    private router: Router
-  ) {}
+  serverUserError = false;
+
+  constructor(private companyService: CompanyService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -26,20 +25,25 @@ export class CreateCompanyComponent implements OnInit {
 
     const userId = JSON.parse(localStorage.getItem('user')!).user._id;
     console.log(userId);
-    
+
     const data = {
       name: form.value.name,
       address: form.value.address,
       description: form.value.description,
-      _id: userId
+      _id: userId,
     };
 
     this.companyService.createCompany(data).subscribe({
       next: () => {
+        var user = JSON.parse(localStorage.getItem('user')!).user;
+        user.isOwner = true;
+        var userObj = {user};
+        localStorage.setItem('user', JSON.stringify(userObj));
         this.router.navigate(['/']);
       },
       error: (err) => {
         console.error(err);
+        this.serverUserError = true;
       },
     });
   }

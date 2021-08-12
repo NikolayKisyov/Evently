@@ -13,7 +13,10 @@ export class HeaderComponent implements OnInit {
   }
 
   get isOwner(): boolean {
-    return JSON.parse(localStorage.getItem('user')!).user.isOwner;
+    if (this.isLogged) {
+      return JSON.parse(localStorage.getItem('user')!).user.isOwner;
+    }
+    return false;
   }
   constructor(private userService: UserService, private router: Router) {}
 

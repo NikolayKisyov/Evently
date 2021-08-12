@@ -8,6 +8,7 @@ import { CompanyService } from 'src/app/services/company/company.service';
 import { AddEventComponent } from './add-event/add-event.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { EditEventComponent } from './edit-event/edit-event.component';
+import { LoginActivate } from 'src/app/guard/auth.activate';
 
 
 
@@ -25,7 +26,8 @@ import { EditEventComponent } from './edit-event/edit-event.component';
     CompanyRoutingModule
   ],
   providers:[
-    CompanyService
+    CompanyService,
+    LoginActivate
   ]
 })
 export class CompanyModule { }

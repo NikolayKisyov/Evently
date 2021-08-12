@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
-import { UserService } from 'src/app/components/user/user.service';
 import { ICompany } from 'src/app/shared/interfaces/company';
 import { IEvent } from 'src/app/shared/interfaces/event';
 import { environment } from 'src/environments/environment';
@@ -9,9 +8,7 @@ import { environment } from 'src/environments/environment';
 const apiURL = environment.apiURL;
 @Injectable()
 export class CompanyService {
-  constructor(
-    private userService: UserService,
-     private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   createCompany(data: Object) {
     return this.http.post<ICompany>(`${apiURL}/company/createCompany`, data, {
@@ -24,6 +21,7 @@ export class CompanyService {
       withCredentials: true,
     });
   }
+
   editEvent(data: Object, id: string) {
     return this.http.post<IEvent>(`${apiURL}/company/editEvent/${id}`, data, {
       withCredentials: true,
@@ -36,17 +34,26 @@ export class CompanyService {
     });
   }
 
+  attendEvent(id: string, data: Object ) {
+    return this.http.post<IEvent>(`${apiURL}/company/attendEvent/${id}`, data, {
+      withCredentials: true,
+    });
+  }
   getEvents() {
-    return this.http.get<IEvent[]>(`${apiURL}/company/events`,{
+    return this.http.get<IEvent[]>(`${apiURL}/company/events`, {
       withCredentials: true,
     });
   }
 
   getEvent(id: string) {
-    return this.http.get<IEvent>(`${apiURL}/company/event/${id}`, { withCredentials: true });
+    return this.http.get<IEvent>(`${apiURL}/company/event/${id}`, {
+      withCredentials: true,
+    });
   }
 
   getCompany(id: string) {
-    return this.http.get<ICompany>(`${apiURL}/company/${id}`, { withCredentials: true });
+    return this.http.get<ICompany>(`${apiURL}/company/${id}`, {
+      withCredentials: true,
+    });
   }
 }

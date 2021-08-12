@@ -12,6 +12,7 @@ export interface IEvent {
   imageUrl: string;
   isOwner: boolean;
   time: string;
+  attendees: IUser[];
   companyId: {
     _id: string;
     name: string;

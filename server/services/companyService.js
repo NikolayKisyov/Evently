@@ -30,7 +30,6 @@ const createEvent = async (data) => {
   const company = await Company.findOne({ _id: user.companyId });
   if (!company) throw { error: { message: "No such company" } };
 
-  console.log(company);
   const event = new Event({
     name,
     date,
@@ -58,11 +57,9 @@ const editEvent = async (eventId, data) => {
   const event = await Event.findOne({ _id: eventId })
     .populate({ path: "companyId" })
     .lean();
-  console.log(event);
-  console.log(user._id);
-  console.log(event.companyId.ownerId);
+
   let userIsOwner = event.companyId.ownerId.toString() == user._id.toString();
-  console.log(userIsOwner);
+
   if (!userIsOwner)
     throw { error: { message: "Unable to perform this action" } };
 
@@ -88,6 +85,32 @@ const deleteEvent = async (eventId, data) => {
     throw { error: { message: "Unable to perform this action" } };
 
   return await Event.deleteOne(event);
+};
+
+const attendEvent = async (eventId, data) => {
+  const { userId } = data;
+
+  const user = await User.findOne({ _id: userId });
+  if (!user) throw { error: { message: "User not found" } };
+
+  const event = await Event.findOne({ _id: eventId })
+    .populate({ path: "companyId" });
+
+  if (event == null)
+    throw { error: { message: "No such event" } };
+
+if(user.eventsAttending.includes(event._id)){
+  event.attendees.remove(user);
+  user.eventsAttending.remove(event); 
+  await user.save();  
+  return await event.save();
+}
+
+  event.attendees.push(user);
+  user.eventsAttending.push(event);
+
+  await user.save();  
+  return await event.save();
 };
 
 const getAllEvents = async () => {
@@ -120,5 +143,6 @@ module.exports = {
   getEventById,
   getCompanyById,
   editEvent,
-  deleteEvent
+  deleteEvent,
+  attendEvent
 };

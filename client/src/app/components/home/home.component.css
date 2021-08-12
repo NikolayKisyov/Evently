@@ -52,9 +52,10 @@
 
   h3.year {
     font-size: 40px;
+    font-family: sans-serif;
     text-align: center;
-    margin-top: 5px;
-    border-bottom: 2px solid #b1b1b1;
+    margin-top: 10px;
+    /* border-bottom: 2px solid #b1b1b1; */
   }
   
   .event-container .event {

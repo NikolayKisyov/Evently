@@ -27,7 +27,6 @@ router.post('/register', async (req, res) => {
     }
 });
 
-
 router.post('/logout', async (req, res, next) => {
     res.clearCookie(config.COOKIE_NAME).send();
 });
