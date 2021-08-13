@@ -1,7 +1,7 @@
 <ng-template *ngIf="isLogged; else loggedOut" [ngIf]="events">
   <h3 class="year">Events</h3>
   <div *ngFor="let event of events">
-    <div class="event-container" [routerLink]="['/event-details', event._id]">
+    <div class="event-container">
       <div class="event">
         <div class="event-left">
           <div class="event-date">
@@ -11,7 +11,7 @@
         </div>
 
         <div class="event-right">
-          <h3 class="event-title">{{event.name}}</h3>
+          <h3 class="event-title" [routerLink]="['/event-details', event._id]">{{event.name}}</h3>
           <h5 class="event-title">Presented by: {{event.companyId.name}}</h5>
           
           <div class="event-timing">
@@ -21,7 +21,7 @@
             <a>
             <mat-icon title="Edit your event" class="editBtn" routerLink="/edit-event/{{event._id}}">edit</mat-icon>
            </a>
-            <mat-icon title="Delete your event" class="deleteBtn" (click)="delete(event._id)">delete</mat-icon>
+            <mat-icon title="Delete your event" class="deleteBtn" (click)="openDeleteDialog(event._id)">delete</mat-icon>
           </span>
         </div>
       </div>

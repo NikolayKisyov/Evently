@@ -118,7 +118,7 @@ const getAllEvents = async () => {
   let res = await Event.find({ date: { $gte: today } })
     .populate({ path: "companyId" })
     .lean();
-  console.log(res);
+    
   return res;
 };
 

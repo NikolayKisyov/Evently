@@ -1,0 +1,24 @@
+#cdk-overlay-0 {
+  background-color: red;
+}
+
+.container {
+  width: 540px;
+}
+
+h2 {
+  color: red;
+}
+
+.input {
+  width: 100%;
+}
+
+.pr-bar {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.actions-container {
+  width: 100%;
+}

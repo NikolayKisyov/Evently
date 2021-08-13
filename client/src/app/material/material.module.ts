@@ -21,7 +21,7 @@ const MaterialComponents = [
   MatDialogModule,
   MatInputModule,
   MatProgressBarModule,
-  MatToolbarModule
+  MatToolbarModule,
 ];
 
 @NgModule({

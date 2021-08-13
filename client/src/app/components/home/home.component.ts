@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { DeleteModalComponent } from 'src/app/material/delete-modal/delete-modal.component';
 import { CompanyService } from 'src/app/services/company/company.service';
 import { IEvent } from 'src/app/shared/interfaces/event';
 
@@ -15,7 +17,10 @@ export class HomeComponent {
     return localStorage.user != null;
   }
 
-  constructor(private companyService: CompanyService, private router: Router) {
+  constructor(
+    private companyService: CompanyService, 
+    private router: Router,
+    public dialog: MatDialog) {
     this.loadEvents();
   }
 
@@ -47,7 +52,20 @@ export class HomeComponent {
     const userId = JSON.parse(localStorage.getItem('user')!).user._id;
     const data = { userId };
     this.companyService.deleteEvent(eventId, data).subscribe(() => {
-      this.router.navigate(['/']);
+      var index = this.events!.map(x => {
+        return x._id;
+      }).indexOf(eventId);
+      
+      this.events!.splice(index, 1);
+      console.log(this.events);
+    });
+  }
+
+  openDeleteDialog(eventId: string) {
+    this.dialog.open(DeleteModalComponent).afterClosed().subscribe(res => {
+      if(res){  
+       this.delete(eventId);
+      } 
     });
   }
 }
