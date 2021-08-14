@@ -21,7 +21,7 @@
       <footer class="card__meta" role="contentinfo">
         <span class="card__subtitle">Going: {{currentAttendees}}</span>
         <div *ngIf="!isOwner" class="example-button-row">
-           <button *ngIf="willAttend" mat-raised-button color="primary" title="Click to dismiss event" (click)="attendEvent(event._id)">Will attend</button>
+           <button *ngIf="willAttend" mat-stroked-button color="primary" title="Click to dismiss event" (click)="attendEvent(event._id)">Will attend</button>
            <button *ngIf="!willAttend" mat-raised-button color="primary" (click)="attendEvent(event._id)" >Attend event</button>
         </div>
       </footer>
